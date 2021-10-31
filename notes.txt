@@ -1,0 +1,7 @@
+// borrar images y forzar
+docker images | grep "none" | awk '{print $3}' | xargs docker rmi -f
+                                      [APP_NAME]            [PROJECT-ID] [APP_VERSION]
+java -jar k-cloud-run-builder-all.jar vue-exchange-vzla-back [PROJECT-ID] [APP_VERSION]true
+
+
+https://console.cloud.google.com/

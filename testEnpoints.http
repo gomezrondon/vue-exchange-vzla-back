@@ -1,0 +1,28 @@
+GET http://localhost:8080/time
+Accept: application/json
+
+###
+
+POST http://localhost:8080/v1/exchange
+Content-Type: application/json
+
+{
+  "vzlRate": "0.2",
+  "TicoRate": "0",
+  "ipAddress": "124.0.0.1"
+}
+###
+
+GET http://localhost:8080/v1/exchange
+Content-Type: application/json
+
+{
+  "vzlRate": "",
+  "TicoRate": "",
+  "ipAddress": "124.0.0.1"
+}
+###
+
+GET http://localhost:8080/v1/exchange/124.0.0.1
+
+###
