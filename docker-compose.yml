@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   react-app:
-    image: vue-exchange-vzla-back:lates
+    image: vue-exchange-vzla-back:latest
     environment:
       - MONGO_DB=
     ports:

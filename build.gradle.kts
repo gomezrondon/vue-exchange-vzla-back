@@ -1,20 +1,19 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 plugins {
-	id("org.springframework.boot") version "2.5.6"
-	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.5.31"
-	kotlin("plugin.spring") version "1.5.31"
-	id("org.springframework.experimental.aot") version "0.10.5"
+	id("org.springframework.boot") version "3.0.1"
+	id("io.spring.dependency-management") version "1.1.0"
+	id("org.graalvm.buildtools.native") version "0.9.18"
+	kotlin("jvm") version "1.7.22"
+	kotlin("plugin.spring") version "1.7.22"
 }
+
 
 group = "com.gomezrondon"
 version = "latest"
-java.sourceCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
-	maven { url = uri("https://repo.spring.io/release") }
 	mavenCentral()
 }
 
@@ -30,15 +29,11 @@ dependencies {
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "11"
+
+		jvmTarget = "17"
 	}
 }
 
 tasks.withType<Test> {
 	useJUnitPlatform()
-}
-
-tasks.withType<BootBuildImage> {
-	builder = "paketobuildpacks/builder:tiny"
-	environment = mapOf("BP_NATIVE_IMAGE" to "true")
 }
